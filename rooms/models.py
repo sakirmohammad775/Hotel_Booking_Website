@@ -1,8 +1,11 @@
 from django.db import models
+from django.conf import settings
 from hotels.models import Hotel
 
+User = settings.AUTH_USER_MODEL  # Optional if you want to connect Room with User later
 
 class Room(models.Model):
+
     ROOM_TYPE = (
         ("single", "Single"),
         ("double", "Double"),
@@ -13,9 +16,14 @@ class Room(models.Model):
     room_number = models.CharField(max_length=20)
     room_type = models.CharField(max_length=10, choices=ROOM_TYPE)
     price_per_night = models.DecimalField(max_digits=10, decimal_places=2)
-    capacity = models.IntegerField()
+    capacity = models.PositiveIntegerField()
     is_available = models.BooleanField(default=True)
+    description = models.TextField(blank=True, null=True)
+    image = models.ImageField(upload_to="rooms/", null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        unique_together = ["hotel", "room_number"]
+
     def __str__(self):
-        return f"{self.hotel.name} - {self.room_number}"
+        return f"{self.hotel.name} - Room {self.room_number}"
