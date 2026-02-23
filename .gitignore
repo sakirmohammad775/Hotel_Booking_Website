@@ -1,0 +1,3 @@
+__pycache__/
+.hotel_env/
+db.sqlite3
