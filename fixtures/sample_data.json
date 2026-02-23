@@ -1,0 +1,187 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "email": "john@example.com",
+      "password": "pbkdf2_sha256$260000$abcdef$hashedpassword",
+      "first_name": "John",
+      "last_name": "Doe",
+      "address": "123 Main Street, Chattogram",
+      "phone_number": "01700000001",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-02-23T10:00:00Z"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "email": "alice@example.com",
+      "password": "pbkdf2_sha256$260000$abcdef$hashedpassword",
+      "first_name": "Alice",
+      "last_name": "Smith",
+      "address": "456 Park Avenue, Dhaka",
+      "phone_number": "01700000002",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-02-23T10:10:00Z"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "email": "bob@example.com",
+      "password": "pbkdf2_sha256$260000$abcdef$hashedpassword",
+      "first_name": "Bob",
+      "last_name": "Brown",
+      "address": "789 Lake Road, Chattogram",
+      "phone_number": "01700000003",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-02-23T10:20:00Z"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "email": "emma@example.com",
+      "password": "pbkdf2_sha256$260000$abcdef$hashedpassword",
+      "first_name": "Emma",
+      "last_name": "Watson",
+      "address": "101 Park Street, Dhaka",
+      "phone_number": "01700000004",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-02-23T10:25:00Z"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+      "email": "oliver@example.com",
+      "password": "pbkdf2_sha256$260000$abcdef$hashedpassword",
+      "first_name": "Oliver",
+      "last_name": "Twist",
+      "address": "102 Lake View, Chattogram",
+      "phone_number": "01700000005",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-02-23T10:30:00Z"
+    }
+  },
+  {
+    "model": "hotels.hotel",
+    "pk": 1,
+    "fields": {
+      "name": "Sea View Resort",
+      "description": "Luxury sea facing hotel",
+      "location": "Cox's Bazar",
+      "price_per_night": "120.00",
+      "available_rooms": 10,
+      "image": null,
+      "created_at": "2026-02-23T09:00:00Z"
+    }
+  },
+  {
+    "model": "hotels.hotel",
+    "pk": 2,
+    "fields": {
+      "name": "Mountain Top Hotel",
+      "description": "Beautiful hotel in Sylhet hills",
+      "location": "Sylhet",
+      "price_per_night": "90.00",
+      "available_rooms": 8,
+      "image": null,
+      "created_at": "2026-02-23T09:15:00Z"
+    }
+  },
+  {
+    "model": "hotels.hotel",
+    "pk": 3,
+    "fields": {
+      "name": "City Center Hotel",
+      "description": "Central location, modern amenities",
+      "location": "Dhaka",
+      "price_per_night": "150.00",
+      "available_rooms": 12,
+      "image": null,
+      "created_at": "2026-02-23T09:30:00Z"
+    }
+  },
+  {
+    "model": "hotels.hotel",
+    "pk": 4,
+    "fields": {
+      "name": "Lakeside Inn",
+      "description": "Quiet hotel with lake view",
+      "location": "Chattogram",
+      "price_per_night": "100.00",
+      "available_rooms": 6,
+      "image": null,
+      "created_at": "2026-02-23T09:45:00Z"
+    }
+  },
+  {
+    "model": "hotels.hotel",
+    "pk": 5,
+    "fields": {
+      "name": "Heritage Hotel",
+      "description": "Experience tradition and luxury",
+      "location": "Rajshahi",
+      "price_per_night": "110.00",
+      "available_rooms": 9,
+      "image": null,
+      "created_at": "2026-02-23T10:00:00Z"
+    }
+  },
+  {
+    "model": "rooms.room",
+    "pk": 1,
+    "fields": {
+      "hotel": 1,
+      "room_number": "101",
+      "room_type": "single",
+      "price_per_night": "120.00",
+      "capacity": 1,
+      "is_available": true,
+      "description": "Single bed with sea view",
+      "image": null,
+      "created_at": "2026-02-23T09:05:00Z"
+    }
+  },
+  {
+    "model": "rooms.room",
+    "pk": 2,
+    "fields": {
+      "hotel": 1,
+      "room_number": "102",
+      "room_type": "double",
+      "price_per_night": "150.00",
+      "capacity": 2,
+      "is_available": true,
+      "description": "Double bed with sea view",
+      "image": null,
+      "created_at": "2026-02-23T09:10:00Z"
+    }
+  },
+  {
+    "model": "rooms.room",
+    "pk": 3,
+    "fields": {
+      "hotel": 1,
+      "room_number": "103",
+      "room_type": "suite",
+      "price_per_night": "200.00",
+      "capacity": 4,
+      "is_available": true,
+      "description": "Suite with sea view and balcony",
+      "image": null,
+      "created_at": "2026-02-23T09:15:00Z"
+    }
+  }
+]

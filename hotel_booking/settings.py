@@ -137,6 +137,14 @@ REST_FRAMEWORK = {
 
 AUTH_USER_MODEL = "users.User"
 
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=10),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=30),
+    "AUTH_HEADER_TYPES": ("JWT",),  # Make sure your headers match this
+}
+
 DJOSER = {
     "LOGIN_FIELD": "email",
     "USER_CREATE_PASSWORD_RETYPE": True,
