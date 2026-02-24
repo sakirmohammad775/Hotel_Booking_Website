@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from hotels.models import Hotel
+from cloudinary.models import CloudinaryField
 
 User = settings.AUTH_USER_MODEL  # Optional if you want to connect Room with User later
 
@@ -19,7 +20,7 @@ class Room(models.Model):
     capacity = models.PositiveIntegerField()
     is_available = models.BooleanField(default=True)
     description = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to="rooms/", null=True, blank=True)
+    image = CloudinaryField('rooms')
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
