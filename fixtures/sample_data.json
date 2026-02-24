@@ -19,7 +19,7 @@
     "pk": 2,
     "fields": {
       "email": "alice@example.com",
-      "password": "pbkdf2_sha256$260000$abcdef$hashedpassword",
+      "password": "User12345@",
       "first_name": "Alice",
       "last_name": "Smith",
       "address": "456 Park Avenue, Dhaka",
