@@ -1,4 +1,4 @@
-# 🏨 StayNest API — Smart Hotel Booking Platform
+# 🏨 Skyline Sanctuary — Smart Hotel Booking Platform
 
 StayNest API is a production-ready **Hotel Booking Backend** built with Django and Django REST Framework.
 It provides secure JWT authentication, hotel & room management, booking workflow, wallet transactions, and fully documented APIs via Swagger and Redoc.
