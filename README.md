@@ -1,80 +1,115 @@
-Absolutely! Since your **hotel booking project** has APIs for **hotels, rooms, bookings, wallet, users**, JWT authentication via **Djoser**, and Swagger/Redoc documentation via **drf_yasg**, I can draft a comprehensive **README.md** file for you. Here’s a ready-to-use version:
+# 🏨 StayNest API — Smart Hotel Booking Platform
+
+StayNest API is a production-ready **Hotel Booking Backend** built with Django and Django REST Framework.
+It provides secure JWT authentication, hotel & room management, booking workflow, wallet transactions, and fully documented APIs via Swagger and Redoc.
 
 ---
 
-````markdown
-# Hotel Booking API
+## 🚀 Key Features
 
-A full-featured **Hotel Booking Website API** built with **Django & Django REST Framework**.  
-It provides endpoints for hotels, rooms, bookings, wallets, and user management. JWT authentication is implemented using **Djoser**, and API documentation is available with **Swagger** and **Redoc**.
-
----
-
-## Features
-
-- **Hotels**: List, retrieve, and manage hotels.
-- **Rooms**: CRUD operations for rooms in hotels.
-- **Bookings**: Create, update, and track room bookings.
-- **Wallet**: Users can maintain wallet balances and transactions.
-- **Users**: Custom user model with email authentication, registration, login, and profile management.
-- **Authentication**: JWT-based authentication using Djoser.
-- **API Documentation**: Swagger & Redoc available for all endpoints.
-- **Nested Endpoints**:  
-  - `/hotels/{hotel_id}/reviews/`  
-  - `/wallets/{wallet_id}/transactions/`
+✅ Custom User Model (Email Login)
+✅ JWT Authentication with Djoser
+✅ Hotel & Room Management
+✅ Booking System with Validation
+✅ Wallet System with Transactions
+✅ Reviews & Ratings
+✅ API Documentation (Swagger + Redoc)
+✅ Cloud Image Storage (Cloudinary)
+✅ PostgreSQL Production Database
+✅ Role-based Permissions
+✅ Nested API Routes
 
 ---
 
-## Tech Stack
+## 🧱 Tech Stack
 
-- Python 3.10+
-- Django 6.0+
-- Django REST Framework
-- Djoser (JWT Authentication)
-- drf_yasg (Swagger / Redoc API docs)
-- SQLite (default, can be replaced with PostgreSQL or MySQL)
-- Pillow (for image uploads)
-- django-filters
+* Python 3.13
+* Django
+* Django REST Framework
+* PostgreSQL
+* Djoser (JWT Auth)
+* drf_yasg (Swagger Docs)
+* Cloudinary (Media Storage)
+* WhiteNoise (Static Files)
+* django-filter
 
 ---
 
-## Installation
+## 📂 Project Structure
 
-1. **Clone the repository**
+```
+hotel_booking/
+│
+├── api/
+├── users/
+├── hotels/
+├── rooms/
+├── bookings/
+├── wallet/
+├── fixtures/
+│   └── sample_data.json
+│
+├── hotel_booking/
+│   ├── settings.py
+│   ├── urls.py
+│   ├── wsgi.py
+│
+└── manage.py
+```
+
+---
+
+## ⚙️ Installation
+
+### 1️⃣ Clone repository
 
 ```bash
-git clone <your-repo-url>
-cd hotel_booking
-````
+git clone https://github.com/YOUR_USERNAME/staynest-api.git
+cd staynest-api
+```
 
-2. **Create a virtual environment**
+### 2️⃣ Create virtual environment
 
 ```bash
 python -m venv .hotel_env
-source .hotel_env/bin/activate   # Linux/macOS
-.hotel_env\Scripts\activate      # Windows
+.hotel_env\Scripts\activate
 ```
 
-3. **Install dependencies**
+### 3️⃣ Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-4. **Apply migrations**
+### 4️⃣ Setup environment variables
+
+Create `.env` file:
+
+```
+dbname=your_db
+user=your_user
+password=your_password
+host=localhost
+port=5432
+
+cloud_name=xxxx
+cloudinary_api_key=xxxx
+api_secret=xxxx
+```
+
+### 5️⃣ Run migrations
 
 ```bash
-python manage.py makemigrations
 python manage.py migrate
 ```
 
-5. **Load sample data (optional)**
+### 6️⃣ Load sample data (optional)
 
 ```bash
 python manage.py loaddata fixtures/sample_data.json
 ```
 
-6. **Run the development server**
+### 7️⃣ Run server
 
 ```bash
 python manage.py runserver
@@ -82,58 +117,97 @@ python manage.py runserver
 
 ---
 
-## API Endpoints
+## 🔐 Authentication Flow
 
-### Authentication (Djoser)
+### Register
 
-* `POST /auth/users/` – Register a new user
-* `POST /auth/jwt/create/` – Obtain JWT token
-* `POST /auth/jwt/refresh/` – Refresh JWT token
-* `POST /auth/jwt/verify/` – Verify token
+```
+POST /auth/users/
+```
 
-### Hotels & Rooms
+```json
+{
+  "email": "user@example.com",
+  "password": "password123",
+  "re_password": "password123"
+}
+```
 
-* `GET /api/v1/hotels/` – List all hotels
-* `GET /api/v1/hotels/{id}/` – Retrieve hotel details
-* `GET /api/v1/rooms/` – List all rooms
-* `GET /api/v1/rooms/{id}/` – Retrieve room details
+### Get JWT Token
 
-**Nested:**
+```
+POST /auth/jwt/create/
+```
 
-* `GET /api/v1/hotels/{hotel_id}/reviews/` – List reviews for a hotel
+### Use token
 
-### Bookings
-
-* `GET /api/v1/bookings/` – List all bookings
-* `POST /api/v1/bookings/` – Create a new booking
-* `GET /api/v1/bookings/{id}/` – Retrieve a booking
-* `PATCH /api/v1/bookings/{id}/` – Update a booking
-* `DELETE /api/v1/bookings/{id}/` – Cancel a booking
-
-### Wallet
-
-* `GET /api/v1/wallets/` – List wallets
-* `POST /api/v1/wallets/` – Create wallet (auto-created on user creation)
-* `GET /api/v1/wallets/{wallet_id}/transactions/` – List wallet transactions
-
-### Users
-
-* `GET /api/v1/users/` – List users (Admin only)
-* `GET /api/v1/users/{id}/` – User profile
-* `PATCH /api/v1/users/{id}/` – Update profile
-* `DELETE /api/v1/users/{id}/` – Delete user (Admin only)
+```
+Authorization: JWT <access_token>
+```
 
 ---
 
-## API Documentation
+## 📡 Main API Endpoints
 
-Swagger UI:
+### 👤 Users
+
+| Method | Endpoint            | Description        |
+| ------ | ------------------- | ------------------ |
+| GET    | /api/v1/users/      | List users (Admin) |
+| GET    | /api/v1/users/{id}/ | Profile            |
+| PATCH  | /api/v1/users/{id}/ | Update             |
+
+---
+
+### 🏨 Hotels
+
+| Method | Endpoint             |
+| ------ | -------------------- |
+| GET    | /api/v1/hotels/      |
+| POST   | /api/v1/hotels/      |
+| GET    | /api/v1/hotels/{id}/ |
+
+---
+
+### 🛏 Rooms
+
+| Method | Endpoint            |
+| ------ | ------------------- |
+| GET    | /api/v1/rooms/      |
+| POST   | /api/v1/rooms/      |
+| GET    | /api/v1/rooms/{id}/ |
+
+---
+
+### 📅 Bookings
+
+| Method | Endpoint               |
+| ------ | ---------------------- |
+| GET    | /api/v1/bookings/      |
+| POST   | /api/v1/bookings/      |
+| PATCH  | /api/v1/bookings/{id}/ |
+| DELETE | /api/v1/bookings/{id}/ |
+
+---
+
+### 💰 Wallet
+
+| Method | Endpoint                           |
+| ------ | ---------------------------------- |
+| GET    | /api/v1/wallets/                   |
+| GET    | /api/v1/wallets/{id}/transactions/ |
+
+---
+
+## 📚 API Documentation
+
+### Swagger UI
 
 ```
 http://127.0.0.1:8000/swagger/
 ```
 
-Redoc:
+### Redoc
 
 ```
 http://127.0.0.1:8000/redoc/
@@ -141,89 +215,103 @@ http://127.0.0.1:8000/redoc/
 
 ---
 
-## Authentication Flow
-
-1. Register user:
-
-```http
-POST /auth/users/
-{
-    "email": "user@example.com",
-    "password": "password123",
-    "re_password": "password123"
-}
-```
-
-2. Obtain JWT token:
-
-```http
-POST /auth/jwt/create/
-{
-    "email": "user@example.com",
-    "password": "password123"
-}
-```
-
-**Response:**
-
-```json
-{
-    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
-    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
-}
-```
-
-3. Access protected endpoints:
-
-Include the token in the `Authorization` header:
+## 🧪 Testing with Sample Data
 
 ```
-Authorization: Bearer <access_token>
+python manage.py loaddata fixtures/sample_data.json
+```
+
+Includes:
+
+* Hotels
+* Rooms
+* Users
+* Wallets
+* Bookings
+* Reviews
+
+---
+
+## 🔒 Permissions
+
+👤 User can:
+
+* Book rooms
+* View own wallet
+* Add reviews
+
+👑 Admin can:
+
+* Manage all data
+* View all bookings
+* Manage users
+
+---
+
+## ☁️ Media Storage
+
+Cloudinary is used for storing:
+
+* Hotel images
+* Room images
+
+---
+
+## 🛠 Deployment
+
+Production ready with:
+
+✅ PostgreSQL
+✅ WhiteNoise
+✅ Cloudinary
+✅ Environment variables
+
+---
+
+## 🐛 Common Issues
+
+### Swagger not loading
+
+✔ Ensure DEBUG=True locally
+✔ Check drf_yasg installed
+✔ Verify static files
+
+### JWT not working
+
+✔ Use header:
+
+```
+Authorization: JWT <token>
 ```
 
 ---
 
-## Folder Structure
+## 👨‍💻 Author
 
-```
-hotel_booking/
-├── api/
-│   ├── urls.py
-│   └── views.py
-├── bookings/
-│   ├── models.py
-│   └── serializers.py
-├── hotels/
-├── rooms/
-├── users/
-├── wallet/
-├── fixtures/
-│   └── sample_data.json
-├── hotel_booking/
-│   ├── settings.py
-│   └── urls.py
-└── manage.py
-```
+Sakir Mohammad Safayet
 
 ---
 
-## Notes
+## 📜 License
 
-* Make sure `MEDIA_URL` and `MEDIA_ROOT` are correctly configured to serve hotel and room images.
-* JWT tokens are required to access most endpoints.
-* Admin users can manage all models, regular users can only manage their own bookings, wallet, and profile.
+MIT License
 
 ---
 
-## License
+## ⭐ Contributing
 
-This project is licensed under the **MIT License**.
+Pull requests are welcome. For major changes, open an issue first.
 
 ---
 
-```
+## 💡 Future Improvements
 
-I can also make a **more visually appealing README with badges, example cURL requests, and screenshots of Swagger UI** if you want.  
+* Payment gateway integration
+* Email notifications
+* Booking calendar UI
+* Rate limiting
+* Docker support
 
-Do you want me to do that next?
-```
+---
+
+⭐ If you like this project, give it a star on GitHub!
