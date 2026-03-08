@@ -73,9 +73,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "hotel_booking.wsgi.app"
 
-CORS_ALLOWED_ORIGINS={
+CORS_ALLOWED_ORIGINS=[
     "http://localhost:5173"
-}
+]
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
