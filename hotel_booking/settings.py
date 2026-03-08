@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     "drf_yasg",
     "rest_framework",
     "django_filters",
+    "corsheaders",
     "djoser",
     "api",
     "users",
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -71,6 +73,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "hotel_booking.wsgi.app"
 
+CORS_ALLOWED_ORIGINS={
+    "http://localhost:5173"
+}
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
