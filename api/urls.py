@@ -3,7 +3,7 @@ from rest_framework_nested import routers
 
 from hotels.views import HotelViewSet
 from rooms.views import RoomViewSet
-from bookings.views import BookingViewSet
+from bookings.views import BookingViewSet,initiate_payment,payment_success
 from wallet.views import WalletViewSet, WalletTransactionViewSet
 from hotels.views import ReviewViewSet
 
@@ -30,4 +30,6 @@ urlpatterns = [
     # Auth
     path("auth/", include("djoser.urls")),
     path("auth/", include("djoser.urls.jwt")),
+    path('payment/initiate/',initiate_payment,name='initiate-payment'),
+    path('payment/success/', payment_success, name='payment_success'),
 ]

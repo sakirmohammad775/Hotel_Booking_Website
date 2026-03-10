@@ -3,6 +3,8 @@
         "corsheaders",
         "djoser",
         "simplejwt",
+        "SSLCOMMERZ",
+        "sslcz",
         "vercel",
         "viewsets",
         "yasg"
